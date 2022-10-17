@@ -12,15 +12,17 @@
     </thead>
     <tbody>
       <% @friends.each do |friend| %>
-        <tr>
-          <th><%= friend.first_name %></th>
-          <th><%= friend.last_name %></th>
-          <th><%= friend.email%></th>
-          <th><%= friend.phone%></th>
-          <th><%= link_to 'View', friend %></th>
-          <th><%= link_to 'Edit', edit_friend_path(friend) %></th>
-          <th><%= link_to 'Delete', friend, data: {turbo_method: :delete, turbo_confirm: 'Are you sure ?'} %></th>
-        </tr>
+        <% if friend.user == current_user %>
+          <tr>
+            <th><%= friend.first_name %></th>
+            <th><%= friend.last_name %></th>
+            <th><%= friend.email%></th>
+            <th><%= friend.phone%></th>
+            <th><%= link_to 'View', friend %></th>
+            <th><%= link_to 'Edit', edit_friend_path(friend) %></th>
+            <th><%= link_to 'Delete', friend, data: {turbo_method: :delete, turbo_confirm: 'Are you sure ?'} %></th>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

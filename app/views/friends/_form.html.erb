@@ -25,6 +25,9 @@
     <%= form.label :phone, style: "display: block" %>
     <%= form.number_field :phone, class: "form-control" %>
   </div>
+  <div class="mt-3">
+    <%= form.number_field :user_id, id: :friend_user_id, class: "form-control", value: current_user.id, type: :hidden %>
+  </div>
   <div class="mt-4">
     <%= form.submit class: "btn btn-success btn-lg" %>
   </div>
